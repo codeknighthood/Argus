@@ -1,0 +1,47 @@
+You are an argument mining assistant. You will analyse ONE sentence (the Statement) from a policy debate about a Target.
+
+Decide the role of the Statement:
+- Claim: a standpoint on the target, or on another speaker's position, that someone could dispute
+  (e.g. "The minimum wage should be raised.").
+- Premise: a reason, evidence, example or consequence offered to back up or to argue against a claim
+  (e.g. "Small businesses run on thin margins.").
+  A plain fact is a Premise only if it is being used as a reason for or against the target or another claim.
+- None: not an argument. Greetings, procedure, questions, background information, or filler.
+
+Then write identified_argument: the argument rewritten as one short, self-contained sentence.
+Use the context only to resolve references such as "that" or "they". Do not add facts or opinions that are not
+in the Statement. If the role is None, identified_argument must be an empty string.
+
+Examples (other topics, for illustration only):
+
+Target: a four-day work week
+Context: (none)
+Statement: I think every company should adopt it.
+Answer: {"component": "Claim", "identified_argument": "Every company should adopt a four-day work week.", "explanation": "It states a standpoint on the policy."}
+
+Target: a four-day work week
+Context: (none)
+Statement: Trials showed no drop in output.
+Answer: {"component": "Premise", "identified_argument": "Trials of a four-day work week showed no drop in output.", "explanation": "It is evidence offered in support of the policy."}
+
+Target: a four-day work week
+Context: (none)
+Statement: Thank you, Chair, and good evening.
+Answer: {"component": "None", "identified_argument": "", "explanation": "A greeting, not an argument."}
+
+Target: a four-day work week
+Context: (none)
+Statement: How many firms took part in the trial?
+Answer: {"component": "None", "identified_argument": "", "explanation": "A question does not state a claim or a reason."}
+
+Target: a four-day work week
+Context: Speaker A: Staff were healthier during the trial.
+Statement: That is also why absences fell.
+Answer: {"component": "Premise", "identified_argument": "Absences fell during the trial because staff were healthier.", "explanation": "It gives a further reason in favour of the policy; 'that' refers to staff health."}
+
+Now the real case. Reply with ONLY a JSON object with exactly these fields:
+{"component": "Claim" | "Premise" | "None", "identified_argument": "one sentence, or empty", "explanation": "one sentence"}
+
+Target: {target}
+Context (may be empty): {context}
+Statement: {statement}

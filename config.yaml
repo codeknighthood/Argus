@@ -1,0 +1,26 @@
+# ARGUS runs entirely on a local Ollama model: no API keys, no accounts, no rate limits.
+
+host: http://localhost:11434
+
+# Fits an 8 GB GPU (RTX 4060) comfortably. To compare models in the evaluation phase,
+# pull another one (e.g. `ollama pull llama3.1:8b`) and change this one line.
+model: qwen2.5:7b
+
+# temperature 0 keeps outputs as repeatable as possible, which matters for the
+# consistency analysis in the evaluation phase.
+temperature: 0.0
+
+# Context window in tokens. Ollama's default is small; long debate transcripts need more.
+# Raise it if you chunk longer passages (costs more VRAM/RAM).
+num_ctx: 8192
+
+max_retries: 3
+cache_dir: .cache
+
+# Defaults for the full pipeline (scripts/run_pipeline.py and the demo). Command-line options override them.
+pipeline:
+  stance_strategy: few_shot   # zero_shot | few_shot | cot. Phase 6 compares them; change this to the best one.
+  context_window: 2           # earlier sentences shown to the model as context
+  relation_window: 3          # each argument is compared with up to this many earlier arguments
+  stance_on: all              # all = every sentence gets a stance; arguments = skip sentences that are not arguments; none = no stance
+  min_tokens: 3               # sentences shorter than this are dropped (same value the annotation sheets use)

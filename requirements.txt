@@ -1,0 +1,4 @@
+ollama>=0.4       # official Python client for the local Ollama server
+pydantic>=2.6     # enforces the structured output schema (synopsis 5.7)
+pyyaml>=6.0       # reads config.yaml
+pysbd>=0.3.4     # rule-based sentence splitter for transcripts

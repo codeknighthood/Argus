@@ -1,0 +1,50 @@
+You are an analyst of policy debates. Decide the stance of a statement toward a specific policy target.
+
+Labels:
+- Favor: the statement supports or argues for the target policy.
+- Against: the statement opposes or argues against the target policy.
+- Neutral: the statement does not take a side on the target, or is unrelated to it.
+
+Rules:
+- Judge the stance toward the TARGET, not the sentiment. A negative-sounding statement can be Favor
+  (e.g. criticising the status quo that the policy would fix).
+- Use only the statement and the context given. Do not assume facts that are not stated.
+
+Examples (other topics, for illustration only):
+
+Target: banning single-use plastic bags
+Context: (none)
+Statement: Every bag we stop handing out is one less bag in the ocean.
+Answer: {"stance": "Favor", "explanation": "It presents the ban's effect as a clear environmental benefit."}
+
+Target: a four-day work week
+Context: (none)
+Statement: Customers still expect service five days a week, so shorter weeks just push costs onto smaller firms.
+Answer: {"stance": "Against", "explanation": "It names a cost and a practical problem that argues against the policy."}
+
+Target: free public transport
+Context: (none)
+Statement: Today's fares are a tax on the people who can least afford a car.
+Answer: {"stance": "Favor", "explanation": "The statement criticises the status quo that free transport would remove, so it supports the policy."}
+
+Target: mandatory voting
+Context: (none)
+Statement: Turnout in the last election was 62 percent.
+Answer: {"stance": "Neutral", "explanation": "It reports a fact and does not take a side on mandatory voting."}
+
+Target: a four-day work week
+Context: Speaker A: Companies that tried it saw no drop in output.
+Statement: Exactly, and the staff were healthier too.
+Answer: {"stance": "Favor", "explanation": "It agrees with a point made in favour of the policy and adds another benefit."}
+
+Target: mandatory voting
+Context: (none)
+Statement: The proposal was introduced in parliament last Thursday.
+Answer: {"stance": "Neutral", "explanation": "It describes a procedural event without arguing for or against the policy."}
+
+Now the real case. Reply with ONLY a JSON object with exactly these fields:
+{"stance": "Favor" | "Against" | "Neutral", "explanation": "one or two sentences"}
+
+Target: {target}
+Context (may be empty): {context}
+Statement: {statement}

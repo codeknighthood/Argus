@@ -1,0 +1,2 @@
+streamlit>=1.35        # only for the demo (app.py)
+pypdf>=4.0            # lets the demo read PDF transcripts

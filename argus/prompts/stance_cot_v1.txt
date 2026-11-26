@@ -1,0 +1,21 @@
+You are an analyst of policy debates. Decide the stance of a statement toward a specific policy target.
+
+Labels:
+- Favor: the statement supports or argues for the target policy.
+- Against: the statement opposes or argues against the target policy.
+- Neutral: the statement does not take a side on the target, or is unrelated to it.
+
+Think step by step before you decide:
+1. What is the statement actually saying (use the context if it is needed to understand it)?
+2. How does that bear on the target? Would the policy make the thing described better or worse?
+3. Only then choose the label. Judge the stance toward the TARGET, not the sentiment: a negative-sounding
+   statement can be Favor (e.g. criticising the status quo that the policy would fix).
+
+Use only the statement and the context given. Do not assume facts that are not stated.
+
+Reply with ONLY a JSON object with exactly these fields, in this order:
+{"reasoning": "two to four short sentences", "stance": "Favor" | "Against" | "Neutral"}
+
+Target: {target}
+Context (may be empty): {context}
+Statement: {statement}

@@ -1,0 +1,57 @@
+You are analysing how two arguments in a policy debate relate to each other.
+Argument A was made first. Argument B was made after it. Decide how B relates to A.
+
+- Support: B backs A up. It gives a reason for A, adds evidence for A, or agrees with A's position.
+- Attack: B argues against A. It rebuts A, gives a reason why A is wrong, or takes the opposing position.
+- None: B is not directly connected to A. They may only share the same topic.
+
+Rules:
+- Judge B toward A, not toward the Target. Two arguments that are both against the target can still Support each other.
+- B must respond to or build on A. Being about the same policy is not enough for Support or Attack.
+- Use only the text given. Do not assume facts that are not stated.
+
+Examples (another topic, for illustration only):
+
+Target: a four-day work week
+Speaker of A: Ana
+Argument A: Every company should adopt a four-day work week.
+Speaker of B: Ben
+Argument B: Trials showed no drop in output.
+Answer: {"relation": "Support", "explanation": "B offers evidence that backs up A."}
+
+Target: a four-day work week
+Speaker of A: Ben
+Argument A: Trials showed no drop in output.
+Speaker of B: Cara
+Argument B: Those trials covered only a few firms in one sector, so they prove little.
+Answer: {"relation": "Attack", "explanation": "B undermines the evidence that A relies on."}
+
+Target: a four-day work week
+Speaker of A: Ana
+Argument A: Every company should adopt a four-day work week.
+Speaker of B: Dev
+Argument B: The venue for tonight's debate has no parking.
+Answer: {"relation": "None", "explanation": "B has nothing to do with A."}
+
+Target: a four-day work week
+Speaker of A: Ben
+Argument A: A four-day work week would raise costs for small firms.
+Speaker of B: Ana
+Argument B: I disagree, because the extra costs are small and are repaid by lower absence.
+Answer: {"relation": "Attack", "explanation": "B directly rejects A's point."}
+
+Target: a four-day work week
+Speaker of A: Ben
+Argument A: The policy is too expensive for small firms.
+Speaker of B: Cara
+Argument B: It also needs extra supervisors, which small firms cannot pay for.
+Answer: {"relation": "Support", "explanation": "B adds a further reason for A, even though both oppose the policy."}
+
+Now the real case. Reply with ONLY a JSON object with exactly these fields:
+{"relation": "Support" | "Attack" | "None", "explanation": "one sentence"}
+
+Target: {target}
+Speaker of A: {speaker_a}
+Argument A: {argument_a}
+Speaker of B: {speaker_b}
+Argument B: {argument_b}

@@ -1,0 +1,14 @@
+# Look and feel of the ARGUS demo (read by `streamlit run app.py` from the project folder).
+[theme]
+base = "dark"
+primaryColor = "#e3b04b"
+backgroundColor = "#0b0d10"
+secondaryBackgroundColor = "#13161b"
+textColor = "#e8e6e1"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false      # nothing leaves this computer
+
+[client]
+toolbarMode = "minimal"
